@@ -23,7 +23,7 @@ public class Win extends JDialog {
     public Win(Frame parent, boolean modal, int movimientosMinimo, int movimientosRealizados) {
         super(parent, modal);
         initComponents();
-        this.lblImagen.setIcon(resizeIcon("win.png", this.lblImagen.getWidth(), this.lblImagen.getHeight()));
+        this.lblImagen.setIcon(resizeIcon("felicidades.png", this.lblImagen.getWidth(), this.lblImagen.getHeight()));
         setLocationRelativeTo(parent);
         this.lblDescripcion.setText(mensaje(movimientosMinimo, movimientosRealizados));
     }
