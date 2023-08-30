@@ -11,7 +11,30 @@ public class Panel extends JPanel {
         setBackground(Color.RED);
     }
 
-
+    public void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+        g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+        int width = getWidth();
+        int height = getHeight();
+        int thickness = 30;
+        g2.setColor(Color.decode("#BDBDBD"));
+        g2.fillRect(0, 0, width, height);
+        border(g2, height, width / 6, (getClicked() == 1));
+        border(g2, height, width / 6 * 3, (getClicked() == 2));
+        border(g2, height, width / 6 * 5, (getClicked() == 3));
+        g2.setColor(Color.BLACK);
+        g2.fillRect(width / 6 - thickness / 2, height - 111, width / 6 * 4 + thickness, thickness);
+        createBar(g2, "A", width / 6, thickness, height);
+        createBar(g2, "B", width / 6 * 3, thickness, height);
+        createBar(g2, "C", width / 6 * 5, thickness, height);
+    }
     public int getClicked() {
         return this.clicked;
     }
