@@ -3,7 +3,7 @@ package view;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +17,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class View extends JFrame {
     private int diskNumber;
-    private ArrayList<JLabel> listDiskOrrigin;
-    private ArrayList<JLabel> listDiskAux;
-    private ArrayList<JLabel> targerListDisk;
+    private LinkedList<JLabel> listDiskOrrigin;
+    private LinkedList<JLabel> listDiskAux;
+    private LinkedList<JLabel> targerListDisk;
     private Panel panel;
     private JLabel title1;
     private JLabel title2;
@@ -38,12 +38,12 @@ public class View extends JFrame {
         heightDisk = height;
         widthDisk = width;
         diskNumber = 0;
-        listDiskOrrigin = new ArrayList<>();
-        listDiskAux = new ArrayList<>();
+        listDiskOrrigin = new LinkedList<>();
+        listDiskAux = new LinkedList<>();
         selectedDisk = null;
         diskUp = false;
         win = false;
-        targerListDisk = new ArrayList<>();
+        targerListDisk = new LinkedList<>();
         initComponents();
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
@@ -71,9 +71,9 @@ public class View extends JFrame {
                     View.this.panel.remove(View.this.selectedDisk);
                 View.this.panel.repaint();
                 View.this.panel.revalidate();
-                View.this.listDiskOrrigin = new ArrayList<>();
-                View.this.listDiskAux = new ArrayList<>();
-                View.this.targerListDisk = new ArrayList<>();
+                View.this.listDiskOrrigin = new LinkedList<>();
+                View.this.listDiskAux = new LinkedList<>();
+                View.this.targerListDisk = new LinkedList<>();
                 View.this.readDiskNumber();
                 View.this.title1.setText("mejor movimiento : " + View.this.numberMove());
                 View.this.title2.setText("movimiento : 0");
@@ -168,7 +168,7 @@ public class View extends JFrame {
         }
     }
 
-    private ArrayList<JLabel> moveDisk(ArrayList<JLabel> lista) {
+    private LinkedList<JLabel> moveDisk(LinkedList<JLabel> lista) {
         if (lista.size() > 0) {
             this.diskUp = true;
             this.selectedDisk = lista.get(lista.size() - 1);
@@ -178,7 +178,7 @@ public class View extends JFrame {
         return lista;
     }
 
-    private ArrayList<JLabel> moveDisk(ArrayList<JLabel> lista, int x) {
+    private LinkedList<JLabel> moveDisk(LinkedList<JLabel> lista, int x) {
         int y = getHeight() - 136;
         boolean regla = true;
         if (lista.size() > 0) {
